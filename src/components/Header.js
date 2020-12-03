@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     container: {
         marginTop: Platform.OS === 'ios' ? 20 : 20,
         padding: 10,
-        borderBottomWidth: 1,
-        borderColor: "#BBB",
+        //borderBottomWidth: 1,
+        //borderColor: "#BBB",
         alignContent: 'flex-start'
     },
     linhaContainer: {

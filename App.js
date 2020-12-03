@@ -7,6 +7,7 @@ import Post from './src/components/Post'
 import { render } from 'react-dom';
 import { ScrollView } from 'react-native-gesture-handler';
 import Feed from './src/pages/Feed'
+import Navigator from './src/pages/Navigator'
 
 
 const Stack = createStackNavigator()
@@ -28,21 +29,11 @@ export default class App extends Component {
     return (
 
       <View style={{ flex: 1 }}>
-        <Feed></Feed>
-
+        <Navigator />
       </View >
 
     );
   }
 }
-
-const style = StyleSheet.create(
-  {
-    container: {
-      flex: 1,
-      backgroundColor: '#fff'
-    }
-  }
-)
 
 

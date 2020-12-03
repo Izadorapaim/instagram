@@ -1,30 +1,31 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import {Gravatar} from 'react-native-gravatar'
+import { Gravatar } from 'react-native-gravatar'
 
-export default props =>{
-    return(
+export default props => {
+    return (
         <View style={styles.container}>
-            <Gravatar options={{ email: props.email, secure: true}} style={styles.avatar}/>
+            <Gravatar options={{ email: props.email, secure: true }} style={styles.avatar} />
             <Text style={styles.nickname}>{props.nickname}</Text>
         </View>
     )
 }
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    avatar:{
+    avatar: {
         width: 30,
         height: 30,
         borderRadius: 15,
-        marginHorizontal: 10
+        //marginHorizontal: 10
     },
-    nickname:{
+    nickname: {
         color: "#444",
-        marginVertical: 10,
+        //marginVertical: 10,
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        marginStart: 5
     }
 })
