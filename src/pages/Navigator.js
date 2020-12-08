@@ -1,10 +1,29 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
+import { createBottomTabNavigator} from 'react-navigation-tabs'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createSwitchNavigator} from 'react-navigation'
 import Icon from 'react-native-vector-icons/FontAwesome'
+
 import Feed from './Feed'
 import AddFoto from './AddFoto'
 import Usuario from './usuario'
+import Login from './Login'
+import Register from './Register'
+
+const authRouter = createStackNavigator({
+    Login: { screen: Login, navigationOptions:{title: 'Login'}},
+    Register:{screen: Register, navigationOptions: {title: 'Register'}}
+},{
+    initialRouteName: 'Login'
+})
+
+const loginOrProfileRouter = createSwitchNavigator({
+    Usuario: Usuario,
+    Auth: authRouter
+},{
+    initialRouteName: 'Usuario'
+})
 
 const MenuRoutes = {
     Feed: {
@@ -27,7 +46,7 @@ const MenuRoutes = {
     },
     Profile: {
         name: 'Profile',
-        screen: Usuario,
+        screen: loginOrProfileRouter,
         navigationOptions: {
             title: 'Profile',
             tabBarIcon: ({ tintColor }) =>
