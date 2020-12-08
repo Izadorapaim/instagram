@@ -3,6 +3,8 @@ import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Feed from './Feed'
+import AddFoto from './AddFoto'
+import Usuario from './usuario'
 
 const MenuRoutes = {
     Feed: {
@@ -16,7 +18,7 @@ const MenuRoutes = {
     },
     Add: {
         name: 'AddPhoto',
-        screen: Feed,
+        screen: AddFoto,
         navigationOptions: {
             title: 'Add Picture',
             tabBarIcon: ({ tintColor }) =>
@@ -25,7 +27,7 @@ const MenuRoutes = {
     },
     Profile: {
         name: 'Profile',
-        screen: Feed,
+        screen: Usuario,
         navigationOptions: {
             title: 'Profile',
             tabBarIcon: ({ tintColor }) =>
@@ -40,5 +42,5 @@ const MenuConfig = {
     }
 }
 
-const MenuNavigator = create(MenuRoutes, MenuConfig)
+const MenuNavigator = createBottomTabNavigator(MenuRoutes, MenuConfig)
 export default createAppContainer(MenuNavigator)
