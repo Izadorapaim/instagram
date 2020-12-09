@@ -129,7 +129,7 @@ export default function Feed() {
           {comentarios}
         </Description>
 
-
+ 
         <TextInput
           multiline={true}
           onChangeText={(text) => setText(text)}
@@ -138,18 +138,18 @@ export default function Feed() {
           maxLength={MAX_LENGTH}
           value={text} />
 
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          {/* <Button
+<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>   
+          <Button
             title="Salvar"
             onPress={() => onSave(String(item.id))}
             accessibilityLabel="Salvar">
-          </Button> */}
+          </Button> 
 
-          <IconButton aria-label="Salvar" onPress={() => onSave(String(item.id))} color="primary">
+          <IconButton aria-label="Salvar" onPress={() => onSave(String(item.id))} accessibilityLabel="Salvar" color="primary">
             <BookmarkBorderIcon />
           </IconButton>
 
-          <IconButton aria-label="Comentar" onPress={() => onComentar(String(item.id))} color="primary">
+          <IconButton aria-label="Comentar" onPress={() => onComentar(String(item.id))}  color="primary">
             <ChatBubbleOutlineIcon />
           </IconButton>
 
