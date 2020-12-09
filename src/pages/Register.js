@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
-    buttomText:{
+    buttom:{
         marginTop: 30,
         padding: 10,
         backgroundColor: '#4286f4'
