@@ -7,6 +7,28 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 class Post extends Component {
+    constructor() {
+        super();
+        this.state = { 
+            iconName: "heart-o",
+            color: "#555",
+            like: false,
+         };
+        
+    }
+
+    onLike(){
+        this.setState({ 
+            like: !this.state.like
+          })
+        if (this.state.like)
+          this.state.iconName = "heart-o",
+          this.state.color = "#555"
+        else
+          this.state.iconName = "heart",
+          this.state.color = "red"
+      }
+
     render() {
         return (
             <View style={styles.container}>
@@ -21,8 +43,10 @@ class Post extends Component {
                 <Image source={this.props.image} style={styles.image} />
                 <View style={styles.linhaInteracao}>
                     <View style={styles.CurtComeComp}>
-                        <Twf>
-                            <Icon name='heart-o' size={30} color='#555' />
+                    {/* onClick={() => this.pararTempo()} */}
+                        {/* <Twf onPress={() => this.onLike({ iconName: "heart" , color:"red"})}> */}
+                         <Twf onPress={() => this.onLike()}> 
+                            <Icon name={this.state.iconName} size={30} color={this.state.color} />
                         </Twf>
                         <Twf>
                             <Icon name='comment-o' size={30} color='#555' />
