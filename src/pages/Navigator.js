@@ -10,6 +10,7 @@ import AddFoto from './AddFoto'
 import Usuario from './usuario'
 import Login from './Login'
 import Register from './Register'
+import Coments from './comentarios'
 
 const authRouter = createStackNavigator({
     Login: { screen: Login, navigationOptions:{title: 'Login'}},
@@ -25,10 +26,23 @@ const loginOrProfileRouter = createSwitchNavigator({
     initialRouteName: 'Usuario'
 })
 
+const ComentRout = createSwitchNavigator({
+    Comentarios: {screen: Coments, navigationOptions:{title: "Comentarios"}}
+})
+
+const feedOrComents = createSwitchNavigator({
+    Feed: Feed,
+    //Coment: ComentRout
+    Coment: Coments
+},{
+    initialRouteName: 'Feed'
+})
+
+
 const MenuRoutes = {
     Feed: {
         name: "Feed",
-        screen: Feed,
+        screen: feedOrComents,
         navigationOptions: {
             title: 'Feed',
             tabBarIcon: ({ tintColor }) =>

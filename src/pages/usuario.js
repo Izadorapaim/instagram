@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import { Gravatar } from 'react-native-gravatar'
 
 class Usuario extends Component{

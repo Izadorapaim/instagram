@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
-import { Dimensions, Image, StyleSheet, View, TouchableOpacity as Twf } from 'react-native'
-import Author from './Author'
-import Comments from './Comments'
-import AddComment from './AddComments'
+import {  FlatList, Dimensions, Image, StyleSheet, View, TouchableOpacity as Twf } from 'react-native'
+import Header from '../../components/Header'
+import Post from '../../components/Post'
+
+import Author from '../../components/Author'
+import Comments from '../comentarios'
+import AddComment from '../../components/AddComments'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
-class Post extends Component {
+class Feed extends Component {
     constructor() {
         super();
         this.state = {
             iconName: "heart-o",
             color: "#555",
-            like: false,
-            iconNameSave: "bookmark-o",
-            save: false
+            like: false
         };
 
     }
+
+    rota = () => {
+        this.props.navigation.navigate('Coment')
+    }
+
     onLike() {
         this.setState({
             like: !this.state.like
@@ -30,19 +35,9 @@ class Post extends Component {
                 this.state.color = "red"
     }
 
-    onSave() {
-        this.setState({
-            save: !this.state.save
-        })
-        if (this.state.save)
-            this.state.iconNameSave = "bookmark-o"
-        else
-            this.state.iconNameSave = "bookmark"
-    }
-
-    render() {
+    Post (){
         return (
-            <View style={styles.container}>
+            <View style={styles.containe}>
                 <View style={styles.linhaCabecalho}>
                     <Twf>
                         <Author email={this.props.email} nickname={this.props.nickname} />
@@ -57,7 +52,7 @@ class Post extends Component {
                         <Twf onPress={() => this.onLike()}>
                             <Icon name={this.state.iconName} size={30} color={this.state.color} />
                         </Twf>
-                        <Twf>
+                        <Twf onPress={this.rota}>
                             <Icon name='comment-o' size={30} color='#555' />
                         </Twf>
                         <Twf>
@@ -65,8 +60,8 @@ class Post extends Component {
                         </Twf>
                     </View>
                     <View style={{ flex: 2, alignItems: 'flex-end' }}>
-                        <Twf onPress={() => this.onSave()}>
-                            <Icon name={this.state.iconNameSave}  size={30} color='#555' />
+                        <Twf>
+                            <Icon name='bookmark-o' size={30} color='#555' />
                         </Twf>
                     </View>
                 </View>
@@ -75,9 +70,51 @@ class Post extends Component {
             </View>
         )
     }
+
+    state = {
+        posts: [{
+            id: Math.random(),
+            nickname: 'Rafael Pereira Filho',
+            email: 'Rafaelprfilho@gmail.com',
+            image: require('../../../assets/imgs/fence.jpg'),
+            comments: [{
+                nickname: 'Jonhn Ray Sheldon',
+                comment: 'Stunning!'
+            }, {
+                nickname: 'Ana Julia Aruuda',
+                comment: 'Foto linda! Onde foi tirada?'
+            }]
+        }, {
+            id: Math.random(),
+            nickname: 'Francisco Leandro Lima',
+            email: 'filima@gmail.com',
+            image: require('../../../assets/imgs/bw.jpg'),
+            comments: []
+        }]
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Header />
+                <FlatList
+                    data={this.state.posts}
+                    keyExtractor={item => `${item.id}`}
+                    renderItem={({ item }) =>
+                       Post(this.state.posts)} />
+            </View>
+        )
+    }
 }
+
+
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5fcff'
+    },
+    containe: {
         flex: 1,
         marginBottom: 15
     },
@@ -104,4 +141,4 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     }
 })
-export default Post
+export default Feed

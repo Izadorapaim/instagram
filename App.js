@@ -1,35 +1,21 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native'
-import Header from './src/components/Header'
-import Post from './src/components/Post'
-import { render } from 'react-dom';
-import { ScrollView } from 'react-native-gesture-handler';
-import Feed from './src/pages/Feed'
+import React, { Component } from 'react'
+import {Provider} from 'react-redux'
 import Navigator from './src/pages/Navigator'
+import { View} from 'react-native'
 
+import storeConfig from './src/store/storeConfig'
 
-const Stack = createStackNavigator()
-
+const store = storeConfig
+const Redux = () => (
+  <Provider store={store}>
+    <Navigator/>
+  </Provider>
+)
 export default class App extends Component {
   render() {
-    const comments = [{
-      nickname: 'Joana Elena Silva',
-      comment: 'Excelente Foto!'
-    }, {
-      nickname: 'Rafael Gustavo',
-      comment: 'Muito ruim! Faço Melhor...'
-    }]
-
-    // <ScrollView>
-    //<Header />
-    //       <Post image={require('./assets/imgs/fence.jpg')} comments={comments} />
-    //     </ScrollView>
     return (
-
       <View style={{ flex: 1 }}>
-        <Navigator />
+       <Navigator/>
       </View >
 
     );
