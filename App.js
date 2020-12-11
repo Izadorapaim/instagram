@@ -1,25 +1,28 @@
-import React, { Component } from 'react'
-import {Provider} from 'react-redux'
-import Navigator from './src/pages/Navigator'
-import { View} from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import Feed from './src/pages/Feeds/index';
+import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native'
 
-import storeConfig from './src/store/storeConfig'
+const Stack = createStackNavigator()
 
-const store = storeConfig
-const Redux = () => (
-  <Provider store={store}>
-    <Navigator/>
-  </Provider>
-)
-export default class App extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-       <Navigator/>
-      </View >
-
-    );
-  }
+export default function App() {
+  return (
+    <View style={style.container}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Feed">
+          <Stack.Screen name="Feed" component={Feed} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </View>
+  );
 }
 
-
+const style = StyleSheet.create(
+  {
+    container: {
+      flex: 1,
+      backgroundColor: '#fff' 
+    }
+  }
+)

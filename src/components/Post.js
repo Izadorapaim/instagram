@@ -3,6 +3,7 @@ import { Dimensions, Image, StyleSheet, View, TouchableOpacity as Twf } from 're
 import Author from './Author'
 import Comments from './Comments'
 import AddComment from './AddComments'
+import { FontAwesome5 } from '@expo/vector-icons'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 
@@ -14,7 +15,8 @@ class Post extends Component {
             color: "#555",
             like: false,
             iconNameSave: "bookmark-o",
-            save: false
+            save: false,
+            ico: ''
         };
 
     }
@@ -29,6 +31,7 @@ class Post extends Component {
             this.state.iconName = "heart",
                 this.state.color = "red"
     }
+  
 
     onSave() {
         this.setState({
@@ -54,7 +57,7 @@ class Post extends Component {
                 <Image source={this.props.image} style={styles.image} />
                 <View style={styles.linhaInteracao}>
                     <View style={styles.CurtComeComp}>
-                        <Twf onPress={() => this.onLike()}>
+                        <Twf onPress={() => this.onLike()} onLongPress={() => this.onDislike()}>
                             <Icon name={this.state.iconName} size={30} color={this.state.color} />
                         </Twf>
                         <Twf>
@@ -62,6 +65,9 @@ class Post extends Component {
                         </Twf>
                         <Twf>
                             <Icon name='share' size={30} color='#555' />
+                        </Twf>
+                        <Twf>
+                        <FontAwesome5 name="heart-broken" size={24} color="black" />
                         </Twf>
                     </View>
                     <View style={{ flex: 2, alignItems: 'flex-end' }}>

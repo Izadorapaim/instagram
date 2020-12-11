@@ -26,19 +26,6 @@ const loginOrProfileRouter = createSwitchNavigator({
     initialRouteName: 'Usuario'
 })
 
-const ComentRout = createSwitchNavigator({
-    Comentarios: {screen: Coments, navigationOptions:{title: "Comentarios"}}
-})
-
-const feedOrComents = createSwitchNavigator({
-    Feed: Feed,
-    //Coment: ComentRout
-    Coment: Coments
-},{
-    initialRouteName: 'Feed'
-})
-
-
 const MenuRoutes = {
     Feed: {
         name: "Feed",
