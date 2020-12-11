@@ -17,7 +17,6 @@ export default function App() {
     </View>
   );
 }
-
 const style = StyleSheet.create(
   {
     container: {
