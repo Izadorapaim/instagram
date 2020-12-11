@@ -3,30 +3,56 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-nativ
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native'
 
-import { StylesProvider } from '@material-ui/core';
+
+import Feed from '../Feed';
 
 class Login extends Component {
     state = {
-        name: '',
         email: '',
         senha: ''
     }
 
+    setState = () => {
+        this.state.email = 'aristotelis@dev.com',
+        this.state.senha = '1234'
+    }
+
+    onLogin = async () => {
+
+        if (this.state.senha === 'aristotelis@dev.com' && this.state.email === '1234') {
+            this.props.navigation.navigate('Feed')
+        } else {
+            console.log('Senha inválida');
+        }
+    };
+
+    
+
     render() {
         return (
             <View style={style.container}>
-                <TextInput placeholder='Email' style={style.input}
-                    keyboardType='email' value={this.state.email}
-                    onChangeText={email => this.setState({ email })} />
-                <TextInput placeholder='Senha' style={style.input}
-                    secureTextEntry={true} value={this.state.senha}
+                <Text style={style.text}> Instagram </Text>
+                <TextInput
+                    name="email"
+                    placeholder='Email' style={style.input}
+                    keyboardType='email' 
+                    onChangeText={email => this.setState({ email })} />         
+
+                <TextInput
+                    name="senha"
+                    placeholder='Senha' style={style.input}
+                    secureTextEntry={true} 
                     onChangeText={senha => this.setState({ senha })} />
+
                 <TouchableOpacity style={style.buttom} onPress={() => {
-                    this.props.navigation.navigate('Feed') }} >
+                    this.onLogin()
+                }} >
                     <Text style={style.buttomText}>Login</Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity style={style.buttom} onPress={() => {
-                    this.props.navigation.navigate('Cadastro')  }} >
+                    this.props.navigation.navigate('Cadastro')
+                }} >
                     <Text style={style.buttomText}>Criar nova conta</Text>
                 </TouchableOpacity>
             </View>
@@ -47,21 +73,25 @@ const style = StyleSheet.create(
             backgroundColor: '#fff'
         },
         buttom: {
-            marginTop: 30,
+            marginTop: 15,
             paddingRight: 10,
-            backgroundColor: "black"
+            borderColor: "black"
+        },
+        text: {
+            marginBottom: 50,
+            fontSize: 20,
+            color: "black"
         },
         buttomText: {
             fontSize: 20,
-            color: "white"
+            color: "black"
         },
         input: {
             marginTop: 20,
             width: '90%',
-            backgroundColor: 'black',
             height: 40,
             borderWidth: 1,
-            borderColor: "gray",
+            borderColor: "black",
             paddingLeft: 15
         }
 

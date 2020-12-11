@@ -31,11 +31,12 @@ export default function App() {
   );
 }
 
-const style = StyleSheet.create(
-  {
-    container: {
-      flex: 1,
-      backgroundColor: '#fff' 
+ 
+  const style = StyleSheet.create(
+    {
+      container: {
+        flex: 1,
+        backgroundColor: '#fff'
+      }
     }
-  }
-)
+  )
