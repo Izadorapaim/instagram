@@ -4,6 +4,8 @@ import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 
+import Interacao from '../../components/interacoes'
+
 
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
 
@@ -99,6 +101,8 @@ export default function Feed() {
               smallSource={{ uri: item.small }}
               source={{ uri: item.image }}
             />
+
+            <Interacao/>
 
             <Description>
               <Name>{item.author.name}</Name> {item.description}
