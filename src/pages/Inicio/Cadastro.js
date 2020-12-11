@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native'
 
 import Feed from '../Feed';
-import { StylesProvider } from '@material-ui/core';
 
 class Cadastro extends Component {
     state = {
@@ -16,15 +15,19 @@ class Cadastro extends Component {
     render () {
         return (
             <View style={style.container}>
-                <TextInput placeholder='Nome' style={style.input}
+                <Text style={style.text}> Instagram </Text> 
+                <TextInput 
+                    placeholder='Nome' style={style.input}
                     autoFocus={true} value={this.state.name}
                     onChangeText = {name => this.setState({ name})} />
 
-                <TextInput placeholder='Email' style={style.input}
+                <TextInput 
+                    placeholder='Email' style={style.input}
                     keyboardType='email' value={this.state.email}
                     onChangeText={email => this.setState({ email})} />
 
-                <TextInput placeholder='Senha' style={style.input}
+                <TextInput 
+                    placeholder='Senha' style={style.input}
                     secureTextEntry={true} value={this.state.senha}
                     onChangeText={senha => this.setState({ senha})} />
 
@@ -50,21 +53,25 @@ const style = StyleSheet.create(
             backgroundColor: '#fff'
         },
         buttom: {
-            marginTop: 30,
+            marginTop: 15,
             paddingRight: 10,
-            backgroundColor: "black"
+            borderColor: "black"
+        },
+        text: {
+            marginBottom: 50,
+            fontSize: 20,
+            color: "black"
         },
         buttomText: {
             fontSize: 20,
-            color: "white"   
+            color: "black"   
         },
         input: {
             marginTop: 20,
             width: '90%',
-            backgroundColor: 'black',
+            borderColor: 'black',
             height: 40,
             borderWidth: 1,
-            borderColor: "gray",
             paddingLeft: 15
         }
 
