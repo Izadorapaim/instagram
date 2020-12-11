@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList,Button , View, ScrollView, TextInput} from 'react-native';
+import { StyleSheet, FlatList,Button , View, ScrollView, TextInput, Dimensions, Image} from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 
 import Interacao from '../../components/interacoes'
+import Comentarios from '../../components/Comments'
 
 
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
@@ -85,7 +86,18 @@ export default function Feed() {
     loadPage()
   }, []);
 
- 
+
+//   state = {
+//     posts: [{
+//         comments: [{
+//             nickname: 'Jonhn Ray Sheldon',
+//             comment: 'Stunning!'
+//         }, {
+//             nickname: 'Ana Julia Aruuda',
+//             comment: 'Foto linda! Onde foi tirada?'
+//         }]
+//     }]
+// }
 
   const renderItem = ({item}) => {
     return (
@@ -119,6 +131,8 @@ export default function Feed() {
               style={[styles.text]}
               maxLength={MAX_LENGTH}
               value={text}/>
+
+              {/* <Comentarios/> */}
 
             <Button
               title="Salvar"
@@ -156,8 +170,8 @@ export default function Feed() {
   );
 }
 
-const styles = StyleSheet.create(
-  {text: {
+const styles = StyleSheet.create({
+  text: {
     fontSize: 30,
     lineHeight: 33,
     color: "#333333",
@@ -166,4 +180,10 @@ const styles = StyleSheet.create(
     minHeight: 170,
     borderTopWidth: 1,
     borderColor: "rgba(212,211,211, 0.3)"
-}})
+},
+image: {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').width * 3 / 4,
+  resizeMode: 'contain'
+}
+})
