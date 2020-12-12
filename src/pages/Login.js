@@ -6,21 +6,25 @@ class Login extends Component {
         email: '',
         password: '',
     }
+    
     login = () => {
-        this.props.navigation.navigate('Usuario')
+        this.props.navigation.navigate('Feed')
+    }
+    registro = () => {
+        this.props.navigation.navigate('Cadastrar novo Usuário')
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <TextInput placeholder='Email' style={styles.input} autoFocus={true} keyboardType={'email-address'} value={this.state.email}
+                <TextInput placeholder='Email' style={styles.input} keyboardType={'email-address'} value={this.state.email}
                     onChangeText={email => this.setState({ email })} />
                 <TextInput placeholder='Senha' style={styles.input} secureTextEntry={true} value={this.state.password}
                     onChangeText={password => this.setState({ password })} />
                 <TouchableOpacity onPress={this.login} style={styles.buttom}>
                     <Text style={styles.buttomText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() =>{this.props.navigation.navigate('Register')}} style={styles.buttom}>
+                <TouchableOpacity onPress={this.registro} style={styles.buttom}>
                     <Text style={styles.buttomText}>Criar conta</Text>
                 </TouchableOpacity>
             </View>

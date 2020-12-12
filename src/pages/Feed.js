@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
-import Header from '../components/Header'
+import Header from './Header'
 import Post from '../components/Post'
 
 class Feed extends Component {

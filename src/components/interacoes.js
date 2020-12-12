@@ -46,6 +46,10 @@ class Post extends Component {
             this.state.iconNameSave = "bookmark"
     }
 
+    coments = () => {
+        this.props.navigation.navigate('Comentarios')
+    }
+
     render() {
         return (
             <View style={styles.linhaInteracao}>
@@ -53,8 +57,8 @@ class Post extends Component {
                     <Twf onPress={() => this.onLike()} onLongPress={() => this.onDislike()}>
                         <MaterialCommunityIcons name={this.state.iconName} size={40} color={this.state.color} />
                     </Twf>
-                    <Twf onPress={(props) => this.props.linke}>
-                    <MaterialCommunityIcons name="comment-multiple-outline" size={35} color="#555" onPress={() =>{this.props.link}} />
+                    <Twf onPress={this.coments}>
+                    <MaterialCommunityIcons name="comment-multiple-outline" size={35} color="#555" />
                     </Twf>
                 </View>
             </View>

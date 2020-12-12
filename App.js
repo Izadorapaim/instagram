@@ -1,8 +1,7 @@
 import React from 'react'
-import { Alert, StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import { AntDesign } from '@expo/vector-icons'
 import { AppLoading } from 'expo'
 import { useFonts, GrandHotel_400Regular } from '@expo-google-fonts/dev'
 
@@ -11,24 +10,9 @@ const Stack = createStackNavigator()
 import Feed from './src/pages/Feeds/index'
 import Comentarios from './src/pages/comentarios'
 import Login from './src/pages/Login'
+import Registro from './src/pages/Register'
 
 export default function App() {
-
-  const logout = () => {
-    Alert.alert(
-      "Deseja sair?",
-      "Ohhh! Não vai embora não :(",
-      [{
-        text: 'Não vou não :)!',
-        onPres: () => { },
-        style: 'cancel'
-      }, {
-        text: 'Tenho que ir bb...',
-        onPress: () => {this.props.navigation.navigate('Login')},
-      }]
-    )
-  }
-
   let [fontsLoaded] = useFonts({
     GrandHotel_400Regular,
   });
@@ -40,27 +24,16 @@ export default function App() {
   return (
     <View style={style.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Feed">
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen
             name="Feed"
             component={Feed}
             options={{
-              title: 'Instagram',
-              headerTitleStyle: {
-                fontFamily: 'GrandHotel_400Regular',
-                fontSize: 35
-              },
-              headerRight: () => (
-                <TouchableOpacity style={{ marginRight: 20 }} onPress={logout}>
-                  <AntDesign name="logout"
-                    size={25}
-                    color="black"
-                  />
-                </TouchableOpacity>
-              )
+             headerShown: false,
             }} />
           <Stack.Screen name="Comentarios" component={Comentarios} />
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Cadastrar novo Usuário" component={Registro}/>
         </Stack.Navigator>
       </NavigationContainer>
     </View>
