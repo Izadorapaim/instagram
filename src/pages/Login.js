@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import {withNavigation} from 'react-navigation'
 
 class Login extends Component {
     state = {
@@ -13,6 +14,9 @@ class Login extends Component {
     registro = () => {
         this.props.navigation.navigate('Cadastrar novo Usuário')
     }
+    coments = () => {
+        this.props.navigation.navigate('Comentarios')
+    }
 
     render() {
         return (
@@ -25,6 +29,9 @@ class Login extends Component {
                     <Text style={styles.buttomText}>Login</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={this.registro} style={styles.buttom}>
+                    <Text style={styles.buttomText}>Criar conta</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.coments} style={styles.buttom}>
                     <Text style={styles.buttomText}>Criar conta</Text>
                 </TouchableOpacity>
             </View>

@@ -8,8 +8,7 @@ class Post extends Component {
         this.state = {
             iconName: "heart-outline",
             color: "#555",
-            like: false,
-            link: this.props
+            like: false
         };
 
     }

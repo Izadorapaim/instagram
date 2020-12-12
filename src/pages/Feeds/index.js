@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, Button, View, ScrollView, TextInput, Dimensions, Image, TouchableWithoutFeedback,TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, Button, View, ScrollView, TextInput, Text, Dimensions, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 
 
 import Interacao from '../../components/interacoes'
@@ -38,7 +39,7 @@ export default function Feed() {
     if (loading) return;
 
     setLoading(true);
-    
+
     axios
       .get(`https://5fa103ace21bab0016dfd97e.mockapi.io/api/v1/feed?page=${pageNumber}&limit=4`)
       .then(response => {
@@ -118,7 +119,7 @@ export default function Feed() {
           />
         </TouchableWithoutFeedback>
 
-        <Interacao/>
+        <Interacao />
 
         <Description>
           <Name>{item.author.name}</Name> {item.description}
@@ -126,10 +127,10 @@ export default function Feed() {
         <Description>
           {comentarios}
         </Description>
-        
-        <AddComnet/>
 
-{/* 
+        <AddComnet />
+
+        {/* 
         <TextInput
           multiline={true}
           onChangeText={(text) => setText(text)}
@@ -138,7 +139,7 @@ export default function Feed() {
           maxLength={MAX_LENGTH}
           value={text} /> */}
 
-     
+
 
         {/* <Button
           title="Salvar"
@@ -156,7 +157,20 @@ export default function Feed() {
 
   return (
     <Container>
-      <Headers />
+      <View style={styles.containerh}>
+        <View style={styles.linhaContainerh}>
+          <View>
+            <Text style={styles.titulo}>Instagram</Text>
+          </View>
+          <View>
+            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => navigate('Login')}>
+              <AntDesign name="logout" size={25} color="black" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+      </View>
+
       <FlatList
         key="list"
         data={feed}
@@ -192,5 +206,24 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').width * 3 / 4,
     resizeMode: 'contain'
+  },
+  containerh: {
+    marginTop: 20,
+    padding: 10,
+    borderBottomWidth: 1,
+    borderColor: "#BBB",
+    alignContent: 'flex-start'
+  },
+  linhaContainerh: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  titulo: {
+    color: '#000',
+    fontFamily: 'GrandHotel_400Regular',
+    fontSize: 35,
+    marginBottom: 2
   }
+
 })

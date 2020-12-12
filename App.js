@@ -4,8 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { AppLoading } from 'expo'
 import { useFonts, GrandHotel_400Regular } from '@expo-google-fonts/dev'
-import { AntDesign } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons'
 
 import Loja from './src/pages/Feeds/Loja'
 
