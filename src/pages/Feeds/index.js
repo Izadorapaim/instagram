@@ -5,6 +5,7 @@ import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
+
 import Interacao from '../../components/interacoes'
 import Comentarios from '../../components/Comments'
 import * as data from '../../../postagens.json'
@@ -90,8 +91,6 @@ export default function Feed() {
     loadPage()
   }, []);
 
-  
-
   const handleDoubleTap = () => {
     const now = Date.now();
     const DOUBLE_PRESS_DELAY = 300;
@@ -101,7 +100,6 @@ export default function Feed() {
       this.lastTap = now;
     }
   }
-
 
   const renderItem = ({ item }) => {
     return (
