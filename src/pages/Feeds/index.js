@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList,Button , View, ScrollView, TextInput} from 'react-native';
+import { StyleSheet, FlatList,Button , View, ScrollView, TextInput, TouchableWithoutFeedback} from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
+
 
 import Interacao from '../../components/interacoes'
 
@@ -85,6 +86,19 @@ export default function Feed() {
     loadPage()
   }, []);
 
+          
+         const lastTap = null;
+          const handleDoubleTap = () => {
+            const now = Date.now();
+            const DOUBLE_PRESS_DELAY = 300;
+            if (this.lastTap && (now - this.lastTap) < DOUBLE_PRESS_DELAY) {
+              this.toggleLike();
+            } else {
+              this.lastTap = now;
+            }
+          }
+          
+
  
 
   const renderItem = ({item}) => {
@@ -93,15 +107,16 @@ export default function Feed() {
             <Header>
               <Avatar source={{ uri: item.author.avatar }} />
               <Name>{item.author.name}</Name>
-            </Header>
-
+        </Header>
+        
+        <TouchableWithoutFeedback onPress={()=> handleDoubleTap}>
             <LazyImage
               aspectRatio={item.aspectRatio} 
               shouldLoad={viewable.includes(item.id)} 
               smallSource={{ uri: item.small }}
               source={{ uri: item.image }}
             />
-
+            </TouchableWithoutFeedback>
             <Interacao/>
 
             <Description>
