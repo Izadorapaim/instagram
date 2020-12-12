@@ -8,7 +8,8 @@ class Post extends Component {
         this.state = {
             iconName: "heart-outline",
             color: "#555",
-            like: false
+            like: false,
+            link: this.props
         };
 
     }
@@ -52,8 +53,8 @@ class Post extends Component {
                     <Twf onPress={() => this.onLike()} onLongPress={() => this.onDislike()}>
                         <MaterialCommunityIcons name={this.state.iconName} size={40} color={this.state.color} />
                     </Twf>
-                    <Twf>
-                    <MaterialCommunityIcons name="comment-multiple-outline" size={35} color="#555" />
+                    <Twf onPress={(props) => this.props.linke}>
+                    <MaterialCommunityIcons name="comment-multiple-outline" size={35} color="#555" onPress={() =>{this.props.link}} />
                     </Twf>
                 </View>
             </View>

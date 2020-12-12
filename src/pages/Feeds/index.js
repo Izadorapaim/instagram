@@ -6,6 +6,7 @@ import { AsyncStorage } from 'react-native';
 
 
 import Interacao from '../../components/interacoes'
+import Comentarios from '../../components/Comments'
 
 
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
@@ -135,6 +136,8 @@ export default function Feed() {
               maxLength={MAX_LENGTH}
               value={text}/>
 
+              {/* <Comentarios/> */}
+
             <Button
               title="Salvar"
               onPress={() => onSave(String(item.id))}
@@ -171,8 +174,8 @@ export default function Feed() {
   );
 }
 
-const styles = StyleSheet.create(
-  {text: {
+const styles = StyleSheet.create({
+  text: {
     fontSize: 30,
     lineHeight: 33,
     color: "#333333",
@@ -181,4 +184,10 @@ const styles = StyleSheet.create(
     minHeight: 170,
     borderTopWidth: 1,
     borderColor: "rgba(212,211,211, 0.3)"
-}})
+},
+image: {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').width * 3 / 4,
+  resizeMode: 'contain'
+}
+})

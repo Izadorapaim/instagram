@@ -19,6 +19,7 @@ class Login extends Component {
 
     onLogin = async () => {
 
+        this.props.navigation.navigate('Feed')
         if (this.state.senha === 'aristotelis@dev.com' && this.state.email === '1234') {
             this.props.navigation.navigate('Feed')
         } else {
