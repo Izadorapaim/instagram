@@ -6,9 +6,11 @@ import { AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import { Feather } from '@expo/vector-icons'
+import {useNavigation} from '@react-navigation/native'
 
 
-import Interacao from '../../components/interacoes'
+import Like from '../../components/like'
+import Coment from '../../components/Coment'
 import Comentario from '../../components/Comments'
 import * as data from '../../../postagens.json'
 import Headers from '../Header'
@@ -19,6 +21,9 @@ import { Container, Post, Header, Avatar, Name, Description, Loading } from './s
 //import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Feed() {
+
+  const navigation = useNavigation();
+
   const [error, setError] = useState('');
   const [feed, setFeed] = useState([]);
   const [page, setPage] = useState(1);
@@ -120,7 +125,12 @@ export default function Feed() {
           />
         </TouchableWithoutFeedback>
 
-        <Interacao />
+        <View style={styles.linhaInteracao}>
+          <Like/>
+          <Coment onPress={() => navigation.navigate('Comentarios')} />
+        </View>
+
+        
 
         <Description>
           <Name>{item.author.name}</Name> {item.description}
@@ -165,12 +175,12 @@ export default function Feed() {
           </View>
           <View style={{flexDirection: 'row'}}>
           <View>
-            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => goBack()}>
+            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => navigation.navigate('Loja')}>
             <Feather name="shopping-bag" size={25} color="black" />
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => this.props.navigation.navigate('Loja')}>
+            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => navigation.navigate('Login')}>
               <AntDesign name="logout" size={25} color="black" />
             </TouchableOpacity>
           </View>
@@ -236,6 +246,14 @@ const styles = StyleSheet.create({
     fontFamily: 'GrandHotel_400Regular',
     fontSize: 35,
     marginBottom: 2
-  }
+  },
+  linhaInteracao: {
+    marginTop: 5,
+    flexDirection: 'row',
+    marginHorizontal: 20,
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    marginBottom: 10
+}
 
 })
