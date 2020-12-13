@@ -7,8 +7,6 @@ class Login extends Component {
     }
 
     onLogin = async () => {
-        console.log(this.state.email)
-        console.log(this.state.senha)
         if (this.state.email === 'aristotelis@dev.com' && this.state.senha === '1234') {
             this.props.navigation.navigate('Feed')
         } else {
@@ -30,19 +28,18 @@ class Login extends Component {
                     name="senha"
                     placeholder='Senha' style={style.input}
                     secureTextEntry={true} 
-                    onChangeText={senha => this.setState({senha})} />
+                    onChangeText={senha => this.setState({senha})}/>
 
                 <TouchableOpacity style={style.buttom} onPress={() => {
-                    this.onLogin()
-                }} >
+                    this.onLogin()}} >
                     <Text style={style.buttomText}>Login</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={style.buttom} onPress={() => {
+                {/* <TouchableOpacity style={style.buttom} onPress={() => {
                     this.props.navigation.navigate('Cadastro')
                 }} >
                     <Text style={style.buttomText}>Criar nova conta</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
             </View>
         )
     }
