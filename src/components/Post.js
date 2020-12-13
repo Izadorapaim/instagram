@@ -40,6 +40,10 @@ class Post extends Component {
             this.state.iconNameSave = "bookmark"
     }
 
+    coments = () =>{
+        this.props.navigation.navigate('Coment')
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -57,7 +61,7 @@ class Post extends Component {
                         <Twf onPress={() => this.onLike()}>
                             <Icon name={this.state.iconName} size={30} color={this.state.color} />
                         </Twf>
-                        <Twf>
+                        <Twf onPress={this.coments}>
                             <Icon name='comment-o' size={30} color='#555' />
                         </Twf>
                         <Twf>
