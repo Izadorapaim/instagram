@@ -56,7 +56,7 @@ class Post extends Component {
                     <Twf onPress={() => this.onLike()} onLongPress={() => this.onDislike()}>
                         <MaterialCommunityIcons name={this.state.iconName} size={40} color={this.state.color} />
                     </Twf>
-                    <Twf onPress={this.coments}>
+                    <Twf onPress={()=> this.coments}>
                     <MaterialCommunityIcons name="comment-multiple-outline" size={35} color="#555" />
                     </Twf>
                 </View>

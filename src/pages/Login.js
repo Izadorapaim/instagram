@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import {withNavigation} from 'react-navigation'
 
 class Login extends Component {
     state = {
@@ -15,7 +14,7 @@ class Login extends Component {
         this.props.navigation.navigate('Cadastrar novo Usuário')
     }
     coments = () => {
-        this.props.navigation.navigate('Comentarios')
+        this.props.navigation.navigate('Loja')
     }
 
     render() {

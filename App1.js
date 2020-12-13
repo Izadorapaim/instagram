@@ -3,7 +3,7 @@ import {Provider} from 'react-redux'
 import Navigator from './src/pages/Navigator'
 import { View} from 'react-native'
 
-import storeConfig from './src/store/storeConfig'
+//import storeConfig from './src/store/storeConfig'
 
 const store = storeConfig
 const Redux = () => (

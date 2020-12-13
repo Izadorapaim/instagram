@@ -5,10 +5,11 @@ import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
+import { Feather } from '@expo/vector-icons'
 
 
 import Interacao from '../../components/interacoes'
-import Comentarios from '../../components/Comments'
+import Comentario from '../../components/Comments'
 import * as data from '../../../postagens.json'
 import Headers from '../Header'
 import AddComnet from '../../components/AddComments';
@@ -155,22 +156,33 @@ export default function Feed() {
     setViewable(changed.map(({ item }) => item.id));
   }, []);
 
-  return (
-    <Container>
+  const Headerr = () =>{
+    return(
       <View style={styles.containerh}>
         <View style={styles.linhaContainerh}>
           <View>
             <Text style={styles.titulo}>Instagram</Text>
           </View>
+          <View style={{flexDirection: 'row'}}>
           <View>
-            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => navigate('Login')}>
+            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => goBack()}>
+            <Feather name="shopping-bag" size={25} color="black" />
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity style={{ marginRight: 20 }} onPress={() => this.props.navigation.navigate('Loja')}>
               <AntDesign name="logout" size={25} color="black" />
             </TouchableOpacity>
           </View>
+          </View>
         </View>
-
       </View>
+    )
+  }
 
+  return (
+    <Container>
+      <Headerr/>
       <FlatList
         key="list"
         data={feed}

@@ -1,10 +1,10 @@
+import 'react-native-gesture-handler'
 import React from 'react'
 import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { AppLoading } from 'expo'
-import { useFonts, GrandHotel_400Regular } from '@expo-google-fonts/dev'
-import { AntDesign } from '@expo/vector-icons'
+import { useFonts, GrandHotel_400Regular, Montserrat_500Medium, Montserrat_700Bold, Montserrat_400Regular } from '@expo-google-fonts/dev'
 
 import Loja from './src/pages/Feeds/Loja'
 
@@ -18,11 +18,15 @@ import Registro from './src/pages/Register'
 export default function App() {
   let [fontsLoaded] = useFonts({
     GrandHotel_400Regular,
+    Montserrat_500Medium,
+    Montserrat_700Bold,
+    Montserrat_400Regular
   });
 
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+
 
   return (
     <View style={style.container}>
@@ -34,9 +38,10 @@ export default function App() {
             options={{
              headerShown: false,
             }} />
-          <Stack.Screen name="Comentarios" component={Comentarios} />
+          <Stack.Screen name="Comentarios" component={Comentarios}/>
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Cadastrar novo Usuário" component={Registro}/>
+          <Stack.Screen name="Loja" component={Loja}/>
         </Stack.Navigator>
       </NavigationContainer>
     </View>

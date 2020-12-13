@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 
 import New from '../../components/New';
 
-export default function  Loja() {
+export default function Loja() {
     return (
         <ScrollView
             showsVerticalScrollIndicator={false}
@@ -19,36 +19,37 @@ export default function  Loja() {
                         placeholder="Pesquisar"
                         style={styles.input}
                     />
-                 </View>
+                </View>
             </View>
 
             <View style={styles.contentNew}>
                 <Text style={styles.title}>Novidades</Text>
             </View>
 
-             <ScrollView horizontal showsHorizontalScrollIndicator={false } stile={{paddingHorizontal: 15,}}> {/*podemos utilizar uma api aqui para consumir itens de uma loja. */}
-             <New
-       cover={require('../../assets/house1.jpg')} 
-       name="Casa de Praia"
-       description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-       onPress={() => navigation.navigate('detail') }
-      />
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} stile={{ paddingHorizontal: 15, }}>
+                {/*podemos utilizar uma api aqui para consumir itens de uma loja. */}
+                <New
+                    cover={require('../../assets/house1.jpg')}
+                    name="Casa de Praia"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => navigation.navigate('detail')}
+                />
 
-      <New
-       cover={require('../../assets/house2.jpg')} 
-       name="Casa Floripa"
-       description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-       onPress={() => {}}
-      />
+                <New
+                    cover={require('../../assets/house2.jpg')}
+                    name="Casa Floripa"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => { }}
+                />
 
-      <New
-       cover={require('../../assets/house3.jpg')} 
-       name="Rancho SP"
-       description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-       onPress={() => {}}
-      />
+                <New
+                    cover={require('../../assets/house3.jpg')}
+                    name="Rancho SP"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => { }}
+                />
             </ScrollView>
-            
+
         </ScrollView>
     );
 }
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat_500Medium',
         paddingHorizontal: 10,
         fontSize: 13,
-      width:'90%'
+        width: '90%'
     },
     contentNew: {
         flexDirection: 'row',
@@ -88,6 +89,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         fontFamily: 'Montserrat_700Bold',
         fontSize: 18,
-        color: '#4f4a4a'    
+        color: '#4f4a4a'
     }
 });
