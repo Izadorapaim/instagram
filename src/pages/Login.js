@@ -1,67 +1,90 @@
-import React, { Component } from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 class Login extends Component {
     state = {
         email: '',
-        password: '',
+        senha: ''
     }
-    
-    login = () => {
-        this.props.navigation.navigate('Feed')
-    }
-    registro = () => {
-        this.props.navigation.navigate('Cadastrar novo Usuário')
-    }
-    coments = () => {
-        this.props.navigation.navigate('Loja')
-    }
+
+    onLogin = async () => {
+        console.log(this.state.email)
+        console.log(this.state.senha)
+        if (this.state.email === 'aristotelis@dev.com' && this.state.senha === '1234') {
+            this.props.navigation.navigate('Feed')
+        } else {
+            console.log('Senha inválida');
+        }
+    };
 
     render() {
         return (
-            <View style={styles.container}>
-                <TextInput placeholder='Email' style={styles.input} keyboardType={'email-address'} value={this.state.email}
-                    onChangeText={email => this.setState({ email })} />
-                <TextInput placeholder='Senha' style={styles.input} secureTextEntry={true} value={this.state.password}
-                    onChangeText={password => this.setState({ password })} />
-                <TouchableOpacity onPress={this.login} style={styles.buttom}>
-                    <Text style={styles.buttomText}>Login</Text>
+            <View style={style.container}>
+                <Text style={style.text}> Instagram </Text>
+                <TextInput
+                    name="email"
+                    placeholder='Email' style={style.input}
+                    keyboardType= 'email-address' 
+                    onChangeText={email => this.setState({email})} />         
+
+                <TextInput
+                    name="senha"
+                    placeholder='Senha' style={style.input}
+                    secureTextEntry={true} 
+                    onChangeText={senha => this.setState({senha})} />
+
+                <TouchableOpacity style={style.buttom} onPress={() => {
+                    this.onLogin()
+                }} >
+                    <Text style={style.buttomText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this.registro} style={styles.buttom}>
-                    <Text style={styles.buttomText}>Criar conta</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={this.coments} style={styles.buttom}>
-                    <Text style={styles.buttomText}>Criar conta</Text>
+
+                <TouchableOpacity style={style.buttom} onPress={() => {
+                    this.props.navigation.navigate('Cadastro')
+                }} >
+                    <Text style={style.buttomText}>Criar nova conta</Text>
                 </TouchableOpacity>
             </View>
         )
     }
 }
 
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttom:{
-        marginTop: 30,
-        padding: 10,
-        backgroundColor: '#4286f4'
-    },
-    buttomText:{
-        fontSize: 20,
-        color: '#FFF'
-    },
-    input:{
-        marginTop: 20,
-        width: '90%',
-        backgroundColor: '#EEE',
-        height: 40,
-        borderWidth: 1,
-        borderColor: '#333',
-        padding: 10
-    }
-})
-
 export default Login
+
+const style = StyleSheet.create(
+    {
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingLeft: 25,
+            paddingRight: 25,
+            backgroundColor: '#fff'
+        },
+        buttom: {
+            marginTop: 15,
+            paddingRight: 10,
+            borderColor: "black"
+        },
+        text: {
+            marginBottom: 50,
+            fontSize: 20,
+            color: "black"
+        },
+        buttomText: {
+            fontSize: 20,
+            color: "black"
+        },
+        input: {
+            marginTop: 20,
+            width: '90%',
+            height: 40,
+            borderWidth: 1,
+            borderColor: "black",
+            paddingLeft: 15
+        }
+
+
+    }
+)
+
+

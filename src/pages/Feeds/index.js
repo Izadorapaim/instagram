@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { StyleSheet, FlatList, Button, View, ScrollView, TextInput, Text, Dimensions, Image, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList, Button, View, TextInput, Text, Dimensions, TouchableOpacity } from 'react-native';
 import axios from 'axios'
 import LazyImage from '../../components/LazyImage';
 import { AsyncStorage } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { AntDesign } from '@expo/vector-icons'
 import { Feather } from '@expo/vector-icons'
 import {useNavigation} from '@react-navigation/native'
 
-
 import Like from '../../components/like'
 import Coment from '../../components/Coment'
 import Comentario from '../../components/Comments'
-import * as data from '../../../postagens.json'
-import Headers from '../Header'
 import AddComnet from '../../components/AddComments';
 
-
 import { Container, Post, Header, Avatar, Name, Description, Loading } from './styles';
-//import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Feed() {
 
@@ -37,8 +31,6 @@ export default function Feed() {
 
   const MAX_LENGTH = 250;
 
-  //const texto = data.author.name;
-  //console.log(texto)
 
   async function loadPage(pageNumber = page, shouldRefresh = false) {
     if (pageNumber === total) return;
@@ -98,16 +90,6 @@ export default function Feed() {
     loadPage()
   }, []);
 
-  const handleDoubleTap = () => {
-    const now = Date.now();
-    const DOUBLE_PRESS_DELAY = 300;
-    if (this.lastTap && (now - this.lastTap) < DOUBLE_PRESS_DELAY) {
-      this.toggleLike();
-    } else {
-      this.lastTap = now;
-    }
-  }
-
   const renderItem = ({ item }) => {
     return (
       <Post>
@@ -116,14 +98,12 @@ export default function Feed() {
           <Name>{item.author.name}</Name>
         </Header>
 
-        <TouchableWithoutFeedback onPress={() => handleDoubleTap} >
           <LazyImage
             aspectRatio={item.aspectRatio}
             shouldLoad={viewable.includes(item.id)}
             smallSource={{ uri: item.small }}
             source={{ uri: item.image }}
           />
-        </TouchableWithoutFeedback>
 
         <View style={styles.linhaInteracao}>
           <Like/>
@@ -149,8 +129,6 @@ export default function Feed() {
           style={[styles.text]}
           maxLength={MAX_LENGTH}
           value={text} /> */}
-
-
 
         {/* <Button
           title="Salvar"
